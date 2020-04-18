@@ -39,8 +39,7 @@ app.put("/repositories/:id", (request, response) => {
     id,
     title,
     url,
-    techs,
-    likes: repositories[repositoryIndex].likes
+    techs
   }
 
   repositories[repositoryIndex] = repository;
@@ -72,13 +71,12 @@ app.post("/repositories/:id/like", (request, response) => {
   }
 
   const repository = {
-    ...repositories[repositoryIndex],
-    likes: repositories[repositoryIndex].likes +1
-  };
+    likes: ++
+  }
 
   repositories[repositoryIndex] = repository;
 
-  return response.json(repository);
+
 });
 
 module.exports = app;
